@@ -1,0 +1,207 @@
+---
+layout: default
+---
+
+<style>
+    .post-header {
+        padding: var(--space-2xl) 0 var(--space-lg);
+        background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+
+    .post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-md);
+        align-items: center;
+        margin-bottom: var(--space-md);
+    }
+
+    .post-date {
+        color: var(--accent-cyan);
+        font-size: 0.9rem;
+    }
+
+    .post-date::before {
+        content: '$ date: ';
+        color: var(--text-muted);
+    }
+
+    .post-reading-time {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+    }
+
+    .post-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: var(--space-md);
+    }
+
+    .post-title::before {
+        content: '# ';
+        color: var(--accent-cyan);
+    }
+
+    .post-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+    }
+
+    .post-content-section {
+        padding: var(--space-xl) 0 var(--space-2xl);
+    }
+
+    .post-body {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1rem;
+        line-height: 1.9;
+        color: var(--text-white);
+    }
+
+    .post-body h2 {
+        margin-top: var(--space-xl);
+        margin-bottom: var(--space-md);
+        font-size: 1.5rem;
+    }
+
+    .post-body h2::before {
+        content: '## ';
+        color: var(--accent-cyan);
+    }
+
+    .post-body h3 {
+        margin-top: var(--space-lg);
+        margin-bottom: var(--space-sm);
+        font-size: 1.2rem;
+    }
+
+    .post-body h3::before {
+        content: '### ';
+        color: var(--accent-cyan);
+    }
+
+    .post-body p {
+        margin-bottom: var(--space-md);
+    }
+
+    .post-body a {
+        color: var(--accent-cyan);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .post-body a:hover {
+        color: var(--accent-green);
+    }
+
+    .post-body code {
+        background: var(--bg-tertiary);
+        padding: 2px 6px;
+        border-radius: var(--radius-sm);
+        font-size: 0.9rem;
+        color: var(--accent-green);
+    }
+
+    .post-body pre {
+        background: var(--bg-tertiary);
+        border: 1px solid rgba(0, 255, 65, 0.2);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+        margin: var(--space-lg) 0;
+        overflow-x: auto;
+    }
+
+    .post-body pre code {
+        background: none;
+        padding: 0;
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .post-body blockquote {
+        border-left: 3px solid var(--accent-green);
+        padding-left: var(--space-lg);
+        margin: var(--space-lg) 0;
+        color: var(--text-muted);
+        font-style: italic;
+    }
+
+    .post-body ul,
+    .post-body ol {
+        padding-left: var(--space-lg);
+        margin-bottom: var(--space-md);
+    }
+
+    .post-body li {
+        margin-bottom: var(--space-sm);
+    }
+
+    .post-body img {
+        max-width: 100%;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(0, 255, 65, 0.2);
+        margin: var(--space-lg) 0;
+    }
+
+    .post-nav {
+        max-width: 800px;
+        margin: 0 auto;
+        padding-top: var(--space-xl);
+        border-top: 1px solid rgba(0, 255, 65, 0.1);
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+        color: var(--accent-cyan);
+        font-size: 0.9rem;
+        transition: var(--transition-fast);
+    }
+
+    .back-link:hover {
+        color: var(--accent-green);
+        transform: translateX(-3px);
+    }
+</style>
+
+<main class="page-content">
+    <!-- Post Header -->
+    <section class="post-header">
+        <div class="container">
+            <div class="post-meta">
+                <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span>
+                {% assign words = content | number_of_words %}
+                {% assign minutes = words | divided_by: 200 %}
+                {% if minutes < 1 %}{% assign minutes=1 %}{% endif %} <span class="post-reading-time">⏱ {{ minutes }}
+                    min read</span>
+            </div>
+
+            <h1 class="post-title">{{ page.title }}</h1>
+
+            {% if page.tags %}
+            <div class="post-tags">
+                {% for tag in page.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Post Content -->
+    <section class="post-content-section">
+        <div class="container">
+            <article class="post-body">
+                {{ content }}
+            </article>
+
+            <nav class="post-nav">
+                <a href="{{ '/blog' | relative_url }}" class="back-link">
+                    ← cd ../blog
+                </a>
+            </nav>
+        </div>
+    </section>
+</main>

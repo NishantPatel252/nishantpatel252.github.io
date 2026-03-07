@@ -1,0 +1,164 @@
+---
+layout: default
+title: Blog | Nishant Patel
+page_id: blog
+description: Cybersecurity blog by Nishant Patel - CTF writeups, security research, tutorials, and insights.
+---
+
+<style>
+    .blog-header {
+        padding: var(--space-2xl) 0 var(--space-xl);
+        background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--space-lg);
+    }
+
+    .blog-card {
+        background: var(--bg-card);
+        border: 1px solid rgba(0, 255, 65, 0.15);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+        transition: var(--transition-normal);
+        text-decoration: none;
+        display: block;
+        color: inherit;
+    }
+
+    .blog-card:hover {
+        border-color: var(--accent-green);
+        box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
+        transform: translateY(-5px);
+    }
+
+    .blog-card-meta {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        margin-bottom: var(--space-md);
+    }
+
+    .blog-card-date {
+        color: var(--accent-cyan);
+        font-size: 0.85rem;
+    }
+
+    .blog-card-date::before {
+        content: '$ date: ';
+        color: var(--text-muted);
+    }
+
+    .blog-card-reading {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+    }
+
+    .blog-card-title {
+        font-size: 1.3rem;
+        margin-bottom: var(--space-sm);
+        color: var(--text-primary);
+    }
+
+    .blog-card-title::before {
+        content: '> ';
+        color: var(--accent-green);
+    }
+
+    .blog-card-excerpt {
+        color: var(--text-white);
+        font-size: 0.9rem;
+        line-height: 1.7;
+        margin-bottom: var(--space-md);
+    }
+
+    .blog-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-xs);
+        margin-bottom: var(--space-md);
+    }
+
+    .blog-card-link {
+        color: var(--accent-cyan);
+        font-size: 0.85rem;
+        transition: var(--transition-fast);
+    }
+
+    .blog-card:hover .blog-card-link {
+        color: var(--accent-green);
+    }
+
+    .empty-blog {
+        text-align: center;
+        padding: var(--space-2xl);
+        color: var(--text-muted);
+    }
+
+    .empty-blog-icon {
+        font-size: 3rem;
+        margin-bottom: var(--space-md);
+    }
+
+    .empty-blog h3 {
+        color: var(--accent-green);
+        margin-bottom: var(--space-sm);
+    }
+</style>
+
+<main class="page-content">
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title" style="font-size: clamp(2rem, 5vw, 3rem);">Blog</h1>
+                <p class="section-subtitle">// cat /var/log/thoughts.log | tail -n 20</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            {% if site.posts.size > 0 %}
+            <div class="blog-grid">
+                {% for post in site.posts %}
+                <a href="{{ post.url | relative_url }}" class="blog-card fade-on-scroll">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                        {% assign words = post.content | number_of_words %}
+                        {% assign minutes = words | divided_by: 200 %}
+                        {% if minutes < 1 %}{% assign minutes=1 %}{% endif %} <span class="blog-card-reading">⏱ {{
+                            minutes }} min read</span>
+                    </div>
+
+                    <h2 class="blog-card-title">{{ post.title }}</h2>
+
+                    {% if post.excerpt %}
+                    <p class="blog-card-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</p>
+                    {% endif %}
+
+                    {% if post.tags %}
+                    <div class="blog-card-tags">
+                        {% for tag in post.tags %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <span class="blog-card-link">cat post.md →</span>
+                </a>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty-blog">
+                <div class="empty-blog-icon">📝</div>
+                <h3>No posts yet</h3>
+                <p>Blog posts are coming soon. Check back later!</p>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+</main>

@@ -1,0 +1,40 @@
+title: Nishant Patel | Cybersecurity Professional
+description: >-
+  Cybersecurity Graduate Student at Northeastern University specializing in
+  Offensive Security, Threat Intelligence, and Risk Management.
+author: Nishant Patel
+
+url: "https://nishantpatel252.github.io"
+baseurl: ""
+
+permalink: /blog/:year/:month/:day/:title/
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+include:
+  - _pages
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
+  - README.md
+  - "*.txt"
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"

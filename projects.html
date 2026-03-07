@@ -1,0 +1,388 @@
+---
+layout: default
+title: Projects | Nishant Patel
+page_id: projects
+description: "Cybersecurity projects by Nishant Patel - Binary exploitation, penetration testing, cloud honeypots,
+threat intelligence, and risk management."
+---
+
+<style>
+    .projects-header {
+        padding: var(--space-2xl) 0 var(--space-xl);
+        background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+
+    .filter-section {
+        margin-bottom: var(--space-xl);
+    }
+
+    .filter-label {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin-bottom: var(--space-md);
+        display: block;
+    }
+
+    .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+    }
+
+    .filter-btn {
+        padding: var(--space-sm) var(--space-md);
+        background: transparent;
+        border: 1px solid rgba(0, 255, 65, 0.3);
+        border-radius: var(--radius-sm);
+        color: var(--text-white);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: var(--transition-normal);
+    }
+
+    .filter-btn::before {
+        content: '$ grep ';
+        color: var(--text-muted);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+        background: rgba(0, 255, 65, 0.1);
+        border-color: var(--accent-green);
+        color: var(--accent-green);
+    }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--space-lg);
+    }
+
+    .project-card {
+        background: var(--bg-card);
+        border: 1px solid rgba(0, 255, 65, 0.15);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        transition: var(--transition-normal);
+    }
+
+    .project-card:hover {
+        border-color: var(--accent-green);
+        box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
+        transform: translateY(-5px);
+    }
+
+    .project-header {
+        padding: var(--space-lg);
+        border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+    }
+
+    .project-category {
+        display: inline-block;
+        padding: 2px 8px;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: var(--radius-sm);
+        margin-bottom: var(--space-sm);
+    }
+
+    .project-category.offensive {
+        background: rgba(255, 0, 64, 0.2);
+        color: #ff4d6a;
+        border: 1px solid rgba(255, 0, 64, 0.3);
+    }
+
+    .project-category.threatintel {
+        background: rgba(157, 0, 255, 0.2);
+        color: #b84dff;
+        border: 1px solid rgba(157, 0, 255, 0.3);
+    }
+
+    .project-category.grc {
+        background: rgba(0, 212, 255, 0.2);
+        color: #4dd4ff;
+        border: 1px solid rgba(0, 212, 255, 0.3);
+    }
+
+    .project-category.recon {
+        background: rgba(255, 165, 0, 0.2);
+        color: #ffb84d;
+        border: 1px solid rgba(255, 165, 0, 0.3);
+    }
+
+    .project-category.dev {
+        background: rgba(0, 255, 65, 0.2);
+        color: var(--accent-green);
+        border: 1px solid rgba(0, 255, 65, 0.3);
+    }
+
+    .project-title {
+        font-size: 1.2rem;
+        color: var(--text-primary);
+        margin-bottom: var(--space-xs);
+    }
+
+    .project-date {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+
+    .project-body {
+        padding: var(--space-lg);
+    }
+
+    .project-description {
+        font-size: 0.9rem;
+        color: var(--text-white);
+        line-height: 1.7;
+        margin-bottom: var(--space-md);
+    }
+
+    .project-highlights {
+        list-style: none;
+        margin-bottom: var(--space-lg);
+    }
+
+    .project-highlights li {
+        position: relative;
+        padding-left: var(--space-md);
+        margin-bottom: var(--space-sm);
+        font-size: 0.85rem;
+        color: var(--text-white);
+    }
+
+    .project-highlights li::before {
+        content: '▸';
+        position: absolute;
+        left: 0;
+        color: var(--accent-green);
+    }
+
+    .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-xs);
+        margin-bottom: var(--space-md);
+    }
+
+    .tech-tag {
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        background: rgba(0, 255, 65, 0.08);
+        border-radius: var(--radius-sm);
+        color: var(--accent-green);
+    }
+
+    .no-projects {
+        text-align: center;
+        padding: var(--space-2xl);
+        color: var(--text-muted);
+    }
+</style>
+
+<main class="page-content">
+    <!-- Projects Header -->
+    <section class="projects-header">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title" style="font-size: clamp(2rem, 5vw, 3rem);">Projects</h1>
+                <p class="section-subtitle">// ls -la ./projects/ | grep security</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-section">
+                <span class="filter-label">Filter by category:</span>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">"*"</button>
+                    <button class="filter-btn" data-filter="offensive">"offensive"</button>
+                    <button class="filter-btn" data-filter="threatintel">"threatintel"</button>
+                    <button class="filter-btn" data-filter="grc">"grc"</button>
+                    <button class="filter-btn" data-filter="recon">"recon"</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="project-grid">
+
+                <!-- Binary Exploitation -->
+                <article class="project-card fade-on-scroll" data-category="offensive">
+                    <div class="project-header">
+                        <span class="project-category offensive">Offensive Security</span>
+                        <h3 class="project-title">Binary Exploitation & Reverse Engineering</h3>
+                        <span class="project-date">Sep 2025 – Nov 2025</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Deep dive into low-level exploitation techniques, analyzing stripped ELF binaries
+                            and developing reliable exploits that bypass modern security mitigations.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Reverse engineered 6+ stripped ELF binaries using GDB and x86/x64 assembly</li>
+                            <li>Discovered and exploited 5+ memory safety vulnerabilities (buffer overflows,
+                                off-by-one errors)</li>
+                            <li>Developed control-flow hijacks via return address and function pointer overwrites</li>
+                            <li>Bypassed NX, ASLR, and stack canaries using ret2libc and ROP techniques</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">GDB</span>
+                            <span class="tech-tag">x86/x64</span>
+                            <span class="tech-tag">ELF</span>
+                            <span class="tech-tag">ROP</span>
+                            <span class="tech-tag">ret2libc</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Penetration Testing -->
+                <article class="project-card fade-on-scroll" data-category="offensive">
+                    <div class="project-header">
+                        <span class="project-category offensive">Offensive Security</span>
+                        <h3 class="project-title">Penetration Testing Lab Simulation</h3>
+                        <span class="project-date">Feb 2025 – Apr 2025</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Full end-to-end red team engagement against a vulnerable Linux environment,
+                            emulating real-world attacker workflows from reconnaissance to data exfiltration.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Executed complete attack chain: recon → exploitation → privilege escalation →
+                                persistence</li>
+                            <li>Exploited 6+ critical vulnerabilities including FTP anonymous access, Samba RCE,
+                                credential leaks</li>
+                            <li>Achieved root-level compromise and lateral movement across 4 user accounts</li>
+                            <li>Mapped all attack paths to MITRE ATT&CK framework for detection gap analysis</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Metasploit</span>
+                            <span class="tech-tag">Burp Suite</span>
+                            <span class="tech-tag">Nmap</span>
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">MITRE ATT&CK</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Cloud Honeypot -->
+                <article class="project-card fade-on-scroll" data-category="threatintel">
+                    <div class="project-header">
+                        <span class="project-category threatintel">Threat Intelligence</span>
+                        <h3 class="project-title">Cloud-Based Honeypot & Threat Analysis</h3>
+                        <span class="project-date">Apr 2025</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Deployed an internet-facing honeypot infrastructure on GCP to capture and analyze
+                            real-world attack patterns and adversary behaviors.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Deployed vulnerable services (vsftpd, OpenSSH, Samba, Nginx) with proper network
+                                isolation</li>
+                            <li>Captured 1,100+ security alerts including SSH brute-force and SMB reconnaissance</li>
+                            <li>Identified potential C2 beaconing attempts and documented IoCs for threat intel</li>
+                            <li>Mapped attack flows to MITRE ATT&CK (T1021.001, T1571) for detection gap analysis</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">GCP</span>
+                            <span class="tech-tag">ntopng</span>
+                            <span class="tech-tag">Nmap</span>
+                            <span class="tech-tag">Wireshark</span>
+                            <span class="tech-tag">NetFlow</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- OSINT Research -->
+                <article class="project-card fade-on-scroll" data-category="recon">
+                    <div class="project-header">
+                        <span class="project-category recon">Reconnaissance</span>
+                        <h3 class="project-title">Cyber Threat Intelligence & OSINT Research</h3>
+                        <span class="project-date">Jan 2025 – Mar 2025</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Comprehensive reconnaissance research using open-source intelligence tools to
+                            identify attack vectors and propose mitigation strategies.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Conducted systematic recon using 10+ OSINT tools (SpiderFoot, Shodan, theHarvester)</li>
+                            <li>Identified exposed cloud storage, CI/CD servers, expired certificates, and employee
+                                data</li>
+                            <li>Documented findings in a 10-page research paper with mitigation recommendations</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">SpiderFoot</span>
+                            <span class="tech-tag">Shodan</span>
+                            <span class="tech-tag">Google Dorking</span>
+                            <span class="tech-tag">ExifTool</span>
+                            <span class="tech-tag">theHarvester</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Risk Management HGA -->
+                <article class="project-card fade-on-scroll" data-category="grc">
+                    <div class="project-header">
+                        <span class="project-category grc">GRC</span>
+                        <h3 class="project-title">Security Risk Management for HGA</h3>
+                        <span class="project-date">Sep 2025 – Oct 2025</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Full-scale cyber and operational risk assessment for a distributed payroll LAN system
+                            using industry-standard frameworks and quantitative analysis.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Applied NIST 800-53 framework and FIPS 199 categorization methodology</li>
+                            <li>Identified 8 high-impact threats and 12 vulnerabilities across critical assets</li>
+                            <li>Developed Prevention, Response, and Mixed strategies using cost-benefit/ROI analysis
+                            </li>
+                            <li>Achieved 73% reduction in total residual risk through optimized security controls</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">NIST 800-53</span>
+                            <span class="tech-tag">FIPS 199</span>
+                            <span class="tech-tag">ROI Analysis</span>
+                            <span class="tech-tag">Risk Assessment</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Boston Grid Analysis -->
+                <article class="project-card fade-on-scroll" data-category="grc">
+                    <div class="project-header">
+                        <span class="project-category grc">GRC</span>
+                        <h3 class="project-title">Risk Analysis of Boston Electricity Grid</h3>
+                        <span class="project-date">Sep 2024 – Dec 2024</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Cyber-physical security risk assessment of critical infrastructure using Model-Based
+                            Risk Assessment and network analysis techniques.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Analyzed 16 nodes of Boston's electricity grid for cyber-physical vulnerabilities</li>
+                            <li>Applied MBRA with betweenness centrality and spectral radius calculations</li>
+                            <li>Identified 6 high-risk nodes critical for grid stability</li>
+                            <li>Modeled $108M prevention and $238M response budget allocation strategies</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">MBRA</span>
+                            <span class="tech-tag">Network Analysis</span>
+                            <span class="tech-tag">Critical Infrastructure</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,651 @@
+/* ================================================
+   HACKER THEME - Animations
+   ================================================ */
+
+/* === Matrix Rain Canvas === */
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+/* === Glitch Text Effect === */
+.glitch {
+    position: relative;
+    animation: glitch-skew 4s infinite linear alternate-reverse;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--accent-red);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--accent-cyan);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(31px, 9999px, 94px, 0);
+        transform: skew(0.15deg);
+    }
+
+    5% {
+        clip: rect(70px, 9999px, 71px, 0);
+        transform: skew(0.55deg);
+    }
+
+    10% {
+        clip: rect(29px, 9999px, 24px, 0);
+        transform: skew(0.85deg);
+    }
+
+    15% {
+        clip: rect(39px, 9999px, 30px, 0);
+        transform: skew(0.34deg);
+    }
+
+    20% {
+        clip: rect(5px, 9999px, 68px, 0);
+        transform: skew(0.62deg);
+    }
+
+    25% {
+        clip: rect(79px, 9999px, 98px, 0);
+        transform: skew(0.08deg);
+    }
+
+    30% {
+        clip: rect(67px, 9999px, 63px, 0);
+        transform: skew(0.73deg);
+    }
+
+    35% {
+        clip: rect(10px, 9999px, 58px, 0);
+        transform: skew(0.27deg);
+    }
+
+    40% {
+        clip: rect(34px, 9999px, 3px, 0);
+        transform: skew(0.49deg);
+    }
+
+    45% {
+        clip: rect(88px, 9999px, 98px, 0);
+        transform: skew(0.13deg);
+    }
+
+    50% {
+        clip: rect(23px, 9999px, 49px, 0);
+        transform: skew(0.91deg);
+    }
+
+    55% {
+        clip: rect(63px, 9999px, 33px, 0);
+        transform: skew(0.44deg);
+    }
+
+    60% {
+        clip: rect(18px, 9999px, 96px, 0);
+        transform: skew(0.17deg);
+    }
+
+    65% {
+        clip: rect(41px, 9999px, 53px, 0);
+        transform: skew(0.68deg);
+    }
+
+    70% {
+        clip: rect(95px, 9999px, 18px, 0);
+        transform: skew(0.29deg);
+    }
+
+    75% {
+        clip: rect(53px, 9999px, 81px, 0);
+        transform: skew(0.52deg);
+    }
+
+    80% {
+        clip: rect(21px, 9999px, 45px, 0);
+        transform: skew(0.03deg);
+    }
+
+    85% {
+        clip: rect(72px, 9999px, 12px, 0);
+        transform: skew(0.77deg);
+    }
+
+    90% {
+        clip: rect(8px, 9999px, 89px, 0);
+        transform: skew(0.36deg);
+    }
+
+    95% {
+        clip: rect(56px, 9999px, 27px, 0);
+        transform: skew(0.64deg);
+    }
+
+    100% {
+        clip: rect(44px, 9999px, 76px, 0);
+        transform: skew(0.43deg);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip: rect(65px, 9999px, 100px, 0);
+        transform: skew(0.35deg);
+    }
+
+    5% {
+        clip: rect(18px, 9999px, 48px, 0);
+        transform: skew(0.78deg);
+    }
+
+    10% {
+        clip: rect(82px, 9999px, 14px, 0);
+        transform: skew(0.12deg);
+    }
+
+    15% {
+        clip: rect(33px, 9999px, 77px, 0);
+        transform: skew(0.56deg);
+    }
+
+    20% {
+        clip: rect(91px, 9999px, 42px, 0);
+        transform: skew(0.23deg);
+    }
+
+    25% {
+        clip: rect(7px, 9999px, 89px, 0);
+        transform: skew(0.67deg);
+    }
+
+    30% {
+        clip: rect(54px, 9999px, 31px, 0);
+        transform: skew(0.41deg);
+    }
+
+    35% {
+        clip: rect(26px, 9999px, 66px, 0);
+        transform: skew(0.89deg);
+    }
+
+    40% {
+        clip: rect(73px, 9999px, 19px, 0);
+        transform: skew(0.05deg);
+    }
+
+    45% {
+        clip: rect(12px, 9999px, 95px, 0);
+        transform: skew(0.72deg);
+    }
+
+    50% {
+        clip: rect(48px, 9999px, 52px, 0);
+        transform: skew(0.18deg);
+    }
+
+    55% {
+        clip: rect(86px, 9999px, 8px, 0);
+        transform: skew(0.59deg);
+    }
+
+    60% {
+        clip: rect(39px, 9999px, 74px, 0);
+        transform: skew(0.31deg);
+    }
+
+    65% {
+        clip: rect(61px, 9999px, 23px, 0);
+        transform: skew(0.84deg);
+    }
+
+    70% {
+        clip: rect(15px, 9999px, 87px, 0);
+        transform: skew(0.47deg);
+    }
+
+    75% {
+        clip: rect(77px, 9999px, 36px, 0);
+        transform: skew(0.09deg);
+    }
+
+    80% {
+        clip: rect(29px, 9999px, 69px, 0);
+        transform: skew(0.63deg);
+    }
+
+    85% {
+        clip: rect(94px, 9999px, 11px, 0);
+        transform: skew(0.26deg);
+    }
+
+    90% {
+        clip: rect(42px, 9999px, 83px, 0);
+        transform: skew(0.75deg);
+    }
+
+    95% {
+        clip: rect(68px, 9999px, 55px, 0);
+        transform: skew(0.38deg);
+    }
+
+    100% {
+        clip: rect(21px, 9999px, 97px, 0);
+        transform: skew(0.51deg);
+    }
+}
+
+@keyframes glitch-skew {
+    0% {
+        transform: skew(0deg);
+    }
+
+    10% {
+        transform: skew(0.5deg);
+    }
+
+    20% {
+        transform: skew(-0.5deg);
+    }
+
+    30% {
+        transform: skew(0.3deg);
+    }
+
+    40% {
+        transform: skew(-0.3deg);
+    }
+
+    50% {
+        transform: skew(0deg);
+    }
+
+    60% {
+        transform: skew(0.4deg);
+    }
+
+    70% {
+        transform: skew(-0.4deg);
+    }
+
+    80% {
+        transform: skew(0.2deg);
+    }
+
+    90% {
+        transform: skew(-0.2deg);
+    }
+
+    100% {
+        transform: skew(0deg);
+    }
+}
+
+/* === Typing Cursor === */
+.typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.2em;
+    background: var(--accent-green);
+    margin-left: 2px;
+    animation: cursor-blink 1s infinite;
+    vertical-align: text-bottom;
+}
+
+@keyframes cursor-blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* === Glow Pulse === */
+.glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+
+    0%,
+    100% {
+        text-shadow: 0 0 5px var(--accent-green),
+            0 0 10px var(--accent-green),
+            0 0 20px var(--accent-green);
+    }
+
+    50% {
+        text-shadow: 0 0 10px var(--accent-green),
+            0 0 20px var(--accent-green),
+            0 0 40px var(--accent-green),
+            0 0 60px var(--accent-green);
+    }
+}
+
+/* === Scan Line Overlay === */
+.scanlines::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.15) 0px,
+            rgba(0, 0, 0, 0.15) 1px,
+            transparent 1px,
+            transparent 2px);
+    z-index: 9999;
+    opacity: 0.3;
+}
+
+/* === Fade In Animations === */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fade-in 0.6s ease forwards;
+}
+
+.fade-in-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.fade-in-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.fade-in-delay-3 {
+    animation-delay: 0.3s;
+}
+
+.fade-in-delay-4 {
+    animation-delay: 0.4s;
+}
+
+.fade-in-delay-5 {
+    animation-delay: 0.5s;
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === Slide In Animations === */
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slide-in-left 0.6s ease forwards;
+}
+
+@keyframes slide-in-left {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slide-in-right 0.6s ease forwards;
+}
+
+@keyframes slide-in-right {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* === Border Glow Animation === */
+.border-glow {
+    position: relative;
+}
+
+.border-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--accent-green), var(--accent-cyan), var(--accent-green));
+    background-size: 400% 400%;
+    border-radius: inherit;
+    z-index: -1;
+    animation: border-glow-move 3s ease infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.border-glow:hover::before {
+    opacity: 1;
+}
+
+@keyframes border-glow-move {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* === Float Animation === */
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* === Terminal Text Appear === */
+.terminal-text {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: terminal-appear 0.5s steps(30) forwards;
+}
+
+@keyframes terminal-appear {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* === Hover Lift Effect === */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
+}
+
+/* === Pulse Ring === */
+.pulse-ring {
+    position: relative;
+}
+
+.pulse-ring::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent-green);
+    border-radius: 50%;
+    animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* === Loading Dots === */
+.loading-dots::after {
+    content: '.';
+    animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+    0% {
+        content: '.';
+    }
+
+    33% {
+        content: '..';
+    }
+
+    66% {
+        content: '...';
+    }
+}
+
+/* === CRT Flicker (subtle) === */
+.crt-flicker {
+    animation: crt-flicker 0.15s infinite;
+}
+
+@keyframes crt-flicker {
+    0% {
+        opacity: 0.97;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.98;
+    }
+}
+
+/* === Code Rain Text === */
+.code-rain-text {
+    background: linear-gradient(180deg, var(--accent-green) 0%, transparent 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* === Neon Box Shadow === */
+.neon-box {
+    box-shadow:
+        0 0 5px var(--accent-green),
+        0 0 10px var(--accent-green),
+        0 0 20px var(--accent-green),
+        inset 0 0 5px rgba(0, 255, 65, 0.1);
+}
+
+/* === Scroll Indicator === */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll-bounce 2s ease infinite;
+}
+
+@keyframes scroll-bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* === Progress Bar === */
+.progress-bar {
+    height: 4px;
+    background: var(--bg-tertiary);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan));
+    border-radius: 2px;
+    animation: progress-fill 1s ease forwards;
+    transform-origin: left;
+}
+
+@keyframes progress-fill {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}

@@ -1,0 +1,360 @@
+/* ================================================
+   HACKER THEME - Responsive Design
+   ================================================ */
+
+/* === Tablet Breakpoint === */
+@media (max-width: 1024px) {
+    :root {
+        --space-xl: 3rem;
+        --space-2xl: 4rem;
+    }
+
+    .container {
+        padding: 0 var(--space-md);
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* === Mobile Landscape / Small Tablet === */
+@media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+
+    /* Navigation */
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: var(--space-lg);
+        gap: var(--space-md);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition-normal);
+        border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+        padding: var(--space-md);
+        text-align: center;
+        border: 1px solid rgba(0, 255, 65, 0.1);
+        border-radius: var(--radius-sm);
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Grid Layouts */
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Hero Section */
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: clamp(1.75rem, 8vw, 3rem);
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* About Page */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+
+    .about-image {
+        order: -1;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    /* Skills */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Timeline */
+    .timeline {
+        padding-left: var(--space-lg);
+    }
+
+    .timeline-item::before {
+        left: calc(-1 * var(--space-lg) - 4px);
+    }
+
+    /* Projects */
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Contact */
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Cards */
+    .card {
+        padding: var(--space-md);
+    }
+
+    /* Social Links */
+    .social-links {
+        justify-content: center;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: var(--space-md);
+        text-align: center;
+    }
+}
+
+/* === Mobile Portrait === */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+
+    :root {
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+        --space-2xl: 3rem;
+    }
+
+    .container {
+        padding: 0 var(--space-sm);
+    }
+
+    /* Navigation */
+    .nav-content {
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .nav-logo {
+        font-size: 1rem;
+    }
+
+    /* Hero */
+    .hero-subtitle {
+        font-size: 0.85rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.85rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Tags */
+    .tag {
+        font-size: 0.7rem;
+    }
+
+    /* Cards */
+    .card {
+        padding: var(--space-md);
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    /* Section Headers */
+    .section-title::before {
+        content: '# ';
+    }
+
+    /* Timeline */
+    .timeline {
+        padding-left: var(--space-md);
+    }
+
+    .timeline-item::before {
+        left: calc(-1 * var(--space-md) - 4px);
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Skills */
+    .skill-category {
+        padding: var(--space-md);
+    }
+
+    .skill-list {
+        gap: var(--space-xs);
+    }
+
+    /* Forms */
+    .form-input,
+    .form-textarea {
+        padding: var(--space-sm);
+        font-size: 0.85rem;
+    }
+
+    /* Glitch Effect - Simplified for mobile */
+    .glitch::before,
+    .glitch::after {
+        display: none;
+    }
+
+    /* Hide scanlines on mobile for performance */
+    .scanlines::after {
+        display: none;
+    }
+
+    /* Reduce matrix opacity on mobile */
+    #matrix-canvas {
+        opacity: 0.08;
+    }
+}
+
+/* === Small Mobile === */
+@media (max-width: 360px) {
+    html {
+        font-size: 13px;
+    }
+
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .section {
+        padding: var(--space-xl) 0;
+    }
+}
+
+/* === Height-based adjustments === */
+@media (max-height: 600px) {
+    .hero {
+        min-height: auto;
+        padding: var(--space-xl) 0;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* === Reduce motion for accessibility === */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .glitch::before,
+    .glitch::after {
+        display: none;
+    }
+
+    #matrix-canvas {
+        display: none;
+    }
+
+    .scanlines::after {
+        display: none;
+    }
+}
+
+/* === Dark mode is default, but handle light mode preference === */
+@media (prefers-color-scheme: light) {
+    /* Keep dark theme - this is intentional for the hacker aesthetic */
+    /* Users who want a light theme would need to implement a toggle */
+}
+
+/* === High contrast mode === */
+@media (prefers-contrast: high) {
+    :root {
+        --text-muted: #888888;
+        --bg-card: rgba(20, 20, 20, 0.95);
+    }
+
+    .card {
+        border-width: 2px;
+    }
+
+    .btn {
+        border-width: 2px;
+    }
+}
+
+/* === Print Styles === */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .nav-container,
+    #matrix-canvas,
+    .scanlines::after,
+    .scroll-indicator {
+        display: none;
+    }
+
+    .page-content {
+        padding-top: 0;
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+
+    .btn {
+        border-color: black;
+        color: black;
+    }
+}

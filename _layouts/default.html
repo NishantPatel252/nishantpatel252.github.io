@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <meta name="keywords"
+        content="cybersecurity, penetration testing, offensive security, ISRO, Northeastern University, security engineer">
+    <meta name="author" content="{{ site.author }}">
+
+    <title>{{ page.title | default: site.title }}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ '/css/styles.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/animations.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/responsive.css' | relative_url }}">
+
+    {% if page.extra_css %}
+    <style>
+        {
+                {
+                page.extra_css
+            }
+        }
+    </style>
+    {% endif %}
+</head>
+
+<body {% if page.matrix_bg %}data-matrix-bg="true" {% endif %}>
+
+    {% if page.matrix_bg %}
+    <canvas id="matrix-canvas"></canvas>
+    {% endif %}
+
+    {% include nav.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+    <!-- Scripts -->
+    {% if page.matrix_bg %}
+    <script src="{{ '/js/matrix.js' | relative_url }}"></script>
+    {% endif %}
+    <script src="{{ '/js/terminal.js' | relative_url }}"></script>
+    <script src="{{ '/js/navigation.js' | relative_url }}"></script>
+</body>
+
+</html>

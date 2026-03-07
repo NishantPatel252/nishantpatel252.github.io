@@ -1,0 +1,271 @@
+---
+layout: default
+title: Nishant Patel | Cybersecurity Professional
+page_id: home
+matrix_bg: true
+description: "Cybersecurity Graduate Student specializing in Offensive Security, Threat Intelligence, and Risk
+Management. Northeastern University MS Cybersecurity."
+---
+
+<style>
+    /* Home Page Specific Styles */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        text-align: center;
+        z-index: 10;
+        padding: var(--space-lg);
+    }
+
+    .hero-badge {
+        display: inline-block;
+        padding: var(--space-xs) var(--space-md);
+        background: rgba(0, 255, 65, 0.1);
+        border: 1px solid rgba(0, 255, 65, 0.3);
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: var(--accent-green);
+        margin-bottom: var(--space-lg);
+        animation: fade-in 0.6s ease forwards;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 700;
+        margin-bottom: var(--space-md);
+        line-height: 1.1;
+    }
+
+    .hero-title .prefix {
+        color: var(--accent-cyan);
+        font-weight: 400;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: var(--text-white);
+        margin-bottom: var(--space-xl);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-subtitle .highlight {
+        color: var(--accent-cyan);
+    }
+
+    .hero-nav {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+        max-width: 300px;
+        margin: 0 auto var(--space-xl);
+    }
+
+    .hero-nav-item {
+        display: flex;
+        align-items: center;
+        padding: var(--space-sm) var(--space-md);
+        background: rgba(15, 15, 15, 0.8);
+        border: 1px solid rgba(0, 255, 65, 0.2);
+        border-radius: var(--radius-sm);
+        color: var(--text-white);
+        text-decoration: none;
+        transition: var(--transition-normal);
+    }
+
+    .hero-nav-item:hover {
+        background: rgba(0, 255, 65, 0.1);
+        border-color: var(--accent-green);
+        transform: translateX(5px);
+    }
+
+    .hero-nav-item .cmd {
+        color: var(--accent-green);
+        margin-right: var(--space-md);
+        font-weight: 500;
+    }
+
+    .hero-nav-item .arrow {
+        margin-left: auto;
+        color: var(--text-muted);
+        transition: var(--transition-fast);
+    }
+
+    .hero-nav-item:hover .arrow {
+        color: var(--accent-green);
+        transform: translateX(3px);
+    }
+
+    .hero-social {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-md);
+        margin-top: var(--space-xl);
+    }
+
+    .social-btn {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        padding: var(--space-sm) var(--space-md);
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        border-radius: var(--radius-sm);
+        color: var(--accent-cyan);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: var(--transition-normal);
+    }
+
+    .social-btn:hover {
+        background: rgba(0, 212, 255, 0.1);
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+    }
+
+    .social-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .scroll-hint {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        animation: scroll-bounce 2s ease infinite;
+    }
+
+    .scroll-hint svg {
+        width: 24px;
+        height: 24px;
+        stroke: var(--accent-green);
+    }
+</style>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge fade-in">
+            <span>// M.S. Cybersecurity @ Northeastern</span>
+        </div>
+
+        <h1 class="hero-title glitch fade-in fade-in-delay-1" data-text="NISHANT PATEL">
+            <span class="prefix">&gt; </span>NISHANT PATEL
+        </h1>
+
+        <p class="hero-subtitle fade-in fade-in-delay-2">
+            Cybersecurity Graduate Student | <span class="highlight">Offensive Security</span> |
+            <span class="highlight">Threat Intelligence</span> | ISRO Alumni
+        </p>
+
+        <nav class="hero-nav fade-in fade-in-delay-3">
+            <a href="{{ '/about' | relative_url }}" class="hero-nav-item">
+                <span class="cmd">$ whoami</span>
+                <span>About Me</span>
+                <span class="arrow">→</span>
+            </a>
+            <a href="{{ '/projects' | relative_url }}" class="hero-nav-item">
+                <span class="cmd">$ ls projects/</span>
+                <span>View Projects</span>
+                <span class="arrow">→</span>
+            </a>
+            <a href="{{ '/blog' | relative_url }}" class="hero-nav-item">
+                <span class="cmd">$ cat blog/</span>
+                <span>Read Blog</span>
+                <span class="arrow">→</span>
+            </a>
+            <a href="{{ '/contact' | relative_url }}" class="hero-nav-item">
+                <span class="cmd">$ ./contact</span>
+                <span>Get in Touch</span>
+                <span class="arrow">→</span>
+            </a>
+        </nav>
+
+        <div class="hero-social fade-in fade-in-delay-4">
+            <a href="https://github.com/NishantPatel252" target="_blank" rel="noopener" class="social-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                </svg>
+                GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/nishant-patel-392ba9340/" target="_blank" rel="noopener"
+                class="social-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                </svg>
+                LinkedIn
+            </a>
+            <a href="https://tryhackme.com/p/nishantpatel5108" target="_blank" rel="noopener" class="social-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+                TryHackMe
+            </a>
+        </div>
+    </div>
+
+    <div class="scroll-hint">
+        <span>scroll down</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M19 12l-7 7-7-7" />
+        </svg>
+    </div>
+</section>
+
+<!-- Quick Highlights Section -->
+<section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="section-title">Quick Stats</h2>
+            <p class="section-subtitle">// grep -r "highlights" ./career</p>
+        </div>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-lg);">
+            <div class="card hover-lift fade-on-scroll">
+                <div class="card-icon" style="font-size: 2rem; margin-bottom: var(--space-md);">🎓</div>
+                <h3 style="color: var(--accent-green); margin-bottom: var(--space-sm);">4.0 GPA</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">M.S. Cybersecurity at Northeastern
+                    University</p>
+            </div>
+
+            <div class="card hover-lift fade-on-scroll">
+                <div class="card-icon" style="font-size: 2rem; margin-bottom: var(--space-md);">🚀</div>
+                <h3 style="color: var(--accent-green); margin-bottom: var(--space-sm);">ISRO</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Interned at Space Applications Centre,
+                    building mission-critical systems</p>
+            </div>
+
+            <div class="card hover-lift fade-on-scroll">
+                <div class="card-icon" style="font-size: 2rem; margin-bottom: var(--space-md);">🔐</div>
+                <h3 style="color: var(--accent-green); margin-bottom: var(--space-sm);">6+ Projects</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Red teaming, threat analysis, risk
+                    management, and more</p>
+            </div>
+
+            <div class="card hover-lift fade-on-scroll">
+                <div class="card-icon" style="font-size: 2rem; margin-bottom: var(--space-md);">💻</div>
+                <h3 style="color: var(--accent-green); margin-bottom: var(--space-sm);">CS + Security</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">B.Tech Computer Science foundation with
+                    security specialization</p>
+            </div>
+        </div>
+    </div>
+</section>

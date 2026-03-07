@@ -1,0 +1,22 @@
+<!-- Navigation -->
+<nav class="nav-container">
+    <div class="nav-content">
+        <a href="{{ '/' | relative_url }}" class="nav-logo">nishant_patel</a>
+        <ul class="nav-links">
+            <li><a href="{{ '/' | relative_url }}" {% if page.page_id=='home' %}class="active" {% endif %}>home</a></li>
+            <li><a href="{{ '/about' | relative_url }}" {% if page.page_id=='about' %}class="active" {% endif
+                    %}>about</a></li>
+            <li><a href="{{ '/projects' | relative_url }}" {% if page.page_id=='projects' %}class="active" {% endif
+                    %}>projects</a></li>
+            <li><a href="{{ '/blog' | relative_url }}" {% if page.page_id=='blog' or page.layout=='post'
+                    %}class="active" {% endif %}>blog</a></li>
+            <li><a href="{{ '/contact' | relative_url }}" {% if page.page_id=='contact' %}class="active" {% endif
+                    %}>contact</a></li>
+        </ul>
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>

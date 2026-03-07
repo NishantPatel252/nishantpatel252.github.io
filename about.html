@@ -1,0 +1,485 @@
+---
+layout: default
+title: About | Nishant Patel
+page_id: about
+description: "About Nishant Patel - Cybersecurity Graduate Student at Northeastern University with experience at ISRO
+and expertise in offensive security."
+---
+
+<style>
+    .about-hero {
+        padding: var(--space-2xl) 0;
+        background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: var(--space-xl);
+        align-items: start;
+    }
+
+    .about-image-container {
+        position: relative;
+    }
+
+    .about-image {
+        width: 100%;
+        max-width: 300px;
+        aspect-ratio: 1;
+        border-radius: var(--radius-lg);
+        border: 2px solid var(--accent-green);
+        object-fit: cover;
+        display: block;
+    }
+
+    .about-image-placeholder {
+        width: 100%;
+        max-width: 300px;
+        aspect-ratio: 1;
+        border-radius: var(--radius-lg);
+        border: 2px solid var(--accent-green);
+        background: var(--bg-tertiary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+    }
+
+    .about-image-container::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: -10px;
+        bottom: -10px;
+        border: 1px solid var(--accent-cyan);
+        border-radius: var(--radius-lg);
+        z-index: -1;
+    }
+
+    .about-intro h1 {
+        margin-bottom: var(--space-lg);
+    }
+
+    .about-intro h1::before {
+        content: '$ cat ';
+        color: var(--accent-cyan);
+        font-weight: 400;
+    }
+
+    .about-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text-white);
+    }
+
+    .about-text p {
+        margin-bottom: var(--space-md);
+    }
+
+    .about-text .highlight {
+        color: var(--accent-green);
+    }
+
+    .experience-section {
+        background: var(--bg-secondary);
+    }
+
+    .experience-card {
+        background: var(--bg-card);
+        border: 1px solid rgba(0, 255, 65, 0.2);
+        border-radius: var(--radius-md);
+        padding: var(--space-xl);
+        margin-bottom: var(--space-lg);
+    }
+
+    .experience-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: var(--space-md);
+        margin-bottom: var(--space-md);
+    }
+
+    .experience-title {
+        color: var(--accent-green);
+        font-size: 1.25rem;
+        margin-bottom: var(--space-xs);
+    }
+
+    .experience-company {
+        color: var(--text-white);
+        font-size: 1rem;
+    }
+
+    .experience-date {
+        color: var(--accent-cyan);
+        font-size: 0.85rem;
+        padding: var(--space-xs) var(--space-sm);
+        background: rgba(0, 212, 255, 0.1);
+        border-radius: var(--radius-sm);
+    }
+
+    .experience-list {
+        list-style: none;
+    }
+
+    .experience-list li {
+        position: relative;
+        padding-left: var(--space-lg);
+        margin-bottom: var(--space-sm);
+        color: var(--text-white);
+        font-size: 0.9rem;
+    }
+
+    .experience-list li::before {
+        content: '├──';
+        position: absolute;
+        left: 0;
+        color: var(--text-muted);
+    }
+
+    .experience-list li:last-child::before {
+        content: '└──';
+    }
+
+    .skills-section {
+        background: var(--bg-primary);
+    }
+
+    .skills-category {
+        margin-bottom: var(--space-lg);
+    }
+
+    .skills-category-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--space-md);
+    }
+
+    .skills-category-title {
+        color: var(--accent-cyan);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .skills-category-title::before {
+        content: '├── ';
+        color: var(--text-muted);
+    }
+
+    .skills-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+    }
+
+    .education-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--space-lg);
+    }
+
+    .education-card {
+        background: var(--bg-card);
+        border: 1px solid rgba(0, 255, 65, 0.2);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+        transition: var(--transition-normal);
+    }
+
+    .education-card:hover {
+        border-color: var(--accent-green);
+        box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+    }
+
+    .education-degree {
+        color: var(--accent-green);
+        font-size: 1.1rem;
+        margin-bottom: var(--space-xs);
+    }
+
+    .education-school {
+        color: var(--text-white);
+        margin-bottom: var(--space-sm);
+    }
+
+    .education-meta {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        font-size: 0.85rem;
+    }
+
+    .education-gpa {
+        color: var(--accent-cyan);
+    }
+
+    .education-date {
+        color: var(--text-muted);
+    }
+
+    .coursework-section {
+        margin-top: var(--space-md);
+        padding-top: var(--space-md);
+        border-top: 1px solid rgba(0, 255, 65, 0.1);
+    }
+
+    .coursework-title {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-bottom: var(--space-sm);
+    }
+
+    .coursework-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-xs);
+    }
+
+    .coursework-item {
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        background: rgba(0, 255, 65, 0.05);
+        border-radius: var(--radius-sm);
+        color: var(--text-white);
+    }
+</style>
+
+<main class="page-content">
+    <!-- About Hero -->
+    <section class="about-hero section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-intro fade-in">
+                    <h1>about.txt</h1>
+                    <div class="about-text">
+                        <p>
+                            I'm a <span class="highlight">Cybersecurity Graduate Student</span> at Northeastern
+                            University
+                            with a foundation in Computer Science from Nirma University, India. My passion lies at
+                            the
+                            intersection of <span class="highlight">offensive security</span>, <span
+                                class="highlight">threat intelligence</span>,
+                            and building resilient systems.
+                        </p>
+                        <p>
+                            During my internship at <span class="highlight">ISRO's Space Applications Centre</span>,
+                            I worked on
+                            mission-critical space systems—modernizing Solid-State Recorder software, building
+                            secure
+                            packet analyzers for telemetry validation, and creating anomaly detection tools that
+                            reduced
+                            debugging time by 30%.
+                        </p>
+                        <p>
+                            Today, I focus on red teaming, penetration testing, binary exploitation, and cloud
+                            security.
+                            I'm actively honing my skills through platforms like TryHackMe while preparing for the
+                            AWS Solutions Architect certification.
+                        </p>
+                        <p style="color: var(--text-muted); font-style: italic;">
+                            // Currently seeking cybersecurity co-op opportunities for Summer/Fall 2025
+                        </p>
+                    </div>
+                </div>
+
+                <div class="about-image-container fade-in fade-in-delay-1">
+                    <!-- <div class="about-image-placeholder">👨‍💻</div> -->
+                    <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Nishant Patel"
+                        class="about-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience-section section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <p class="section-subtitle">// cat /var/log/career.log</p>
+            </div>
+
+            <div class="experience-card fade-on-scroll">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Intern</h3>
+                        <p class="experience-company">Space Applications Centre, ISRO • Ahmedabad, India</p>
+                    </div>
+                    <span class="experience-date">Feb 2024 – May 2024</span>
+                </div>
+                <ul class="experience-list">
+                    <li>Modernized legacy Solid-State Recorder software to eliminate single points of failure,
+                        improving fault tolerance for mission-critical space systems</li>
+                    <li>Designed and deployed a packet analyzer for mission-critical telemetry streams, enabling
+                        real-time detection of protocol violations and malformed data</li>
+                    <li>Built an automated anomaly detection dashboard to streamline incident triage, reducing
+                        debugging time by 30%</li>
+                </ul>
+            </div>
+
+            <div class="experience-card fade-on-scroll">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Professional Development</h3>
+                        <p class="experience-company">Continuous Learning</p>
+                    </div>
+                    <span class="experience-date">Ongoing</span>
+                </div>
+                <ul class="experience-list">
+                    <li>Completing advanced offensive security labs on TryHackMe: privilege escalation, lateral
+                        movement, Active Directory attacks, post-exploitation</li>
+                    <li>Preparing for AWS Solutions Architect – Associate certification with focus on cloud security
+                        misconfigurations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills-section section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills</h2>
+                <p class="section-subtitle">// ls -la /usr/bin/skills/</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category fade-on-scroll">
+                    <h3 class="skills-category-title">Offensive Security & Red Team</h3>
+                    <div class="skills-tags">
+                        <span class="tag">Penetration Testing</span>
+                        <span class="tag">MITRE ATT&CK</span>
+                        <span class="tag">Adversary Emulation</span>
+                        <span class="tag">Binary Exploitation</span>
+                        <span class="tag">Reverse Engineering</span>
+                        <span class="tag">ROP / ret2libc</span>
+                        <span class="tag">OSINT Reconnaissance</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-on-scroll">
+                    <h3 class="skills-category-title">Cloud & Network Security</h3>
+                    <div class="skills-tags">
+                        <span class="tag tag-cyan">GCP</span>
+                        <span class="tag tag-cyan">AWS</span>
+                        <span class="tag tag-cyan">VPCs & Security Groups</span>
+                        <span class="tag tag-cyan">IAM</span>
+                        <span class="tag tag-cyan">Firewall Configuration</span>
+                        <span class="tag tag-cyan">Network Segmentation</span>
+                        <span class="tag tag-cyan">VLAN</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-on-scroll">
+                    <h3 class="skills-category-title">Threat Detection & Monitoring</h3>
+                    <div class="skills-tags">
+                        <span class="tag tag-purple">Honeypot Deployment</span>
+                        <span class="tag tag-purple">SIEM Integration</span>
+                        <span class="tag tag-purple">NetFlow Analysis</span>
+                        <span class="tag tag-purple">Log Analysis</span>
+                        <span class="tag tag-purple">Wireshark</span>
+                        <span class="tag tag-purple">Nmap</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-on-scroll">
+                    <h3 class="skills-category-title">Tools</h3>
+                    <div class="skills-tags">
+                        <span class="tag tag-red">Metasploit</span>
+                        <span class="tag tag-red">Burp Suite</span>
+                        <span class="tag tag-red">GDB</span>
+                        <span class="tag tag-red">Ghidra</span>
+                        <span class="tag tag-red">Docker</span>
+                        <span class="tag tag-red">Git</span>
+                        <span class="tag tag-red">SpiderFoot</span>
+                        <span class="tag tag-red">Shodan</span>
+                        <span class="tag tag-red">theHarvester</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-on-scroll">
+                    <h3 class="skills-category-title">Programming Languages</h3>
+                    <div class="skills-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">C/C++</span>
+                        <span class="tag">Bash</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-on-scroll">
+                    <h3 class="skills-category-title">CS Fundamentals</h3>
+                    <div class="skills-tags">
+                        <span class="tag tag-cyan">Operating Systems</span>
+                        <span class="tag tag-cyan">Data Structures & Algorithms</span>
+                        <span class="tag tag-cyan">OOP</span>
+                        <span class="tag tag-cyan">DBMS</span>
+                        <span class="tag tag-cyan">Computer Networks</span>
+                        <span class="tag tag-cyan">Computer Architecture</span>
+                        <span class="tag tag-cyan">ML/DL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Education</h2>
+                <p class="section-subtitle">// grep -r "degree" ./education/</p>
+            </div>
+
+            <div class="education-grid">
+                <div class="education-card fade-on-scroll">
+                    <h3 class="education-degree">M.S. Cybersecurity</h3>
+                    <p class="education-school">Northeastern University, Boston, MA</p>
+                    <div class="education-meta">
+                        <span class="education-gpa">GPA: 4.00</span>
+                        <span class="education-date">Sep 2024 – Present</span>
+                    </div>
+                    <div class="coursework-section">
+                        <p class="coursework-title">Relevant Coursework:</p>
+                        <div class="coursework-list">
+                            <span class="coursework-item">Network Security Practices</span>
+                            <span class="coursework-item">Software Vulnerabilities</span>
+                            <span class="coursework-item">Secure Coding</span>
+                            <span class="coursework-item">Security Risk Management</span>
+                            <span class="coursework-item">Cyber Threat Technologies</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-card fade-on-scroll">
+                    <h3 class="education-degree">B.Tech Computer Science & Engineering</h3>
+                    <p class="education-school">Nirma University, Ahmedabad, India</p>
+                    <div class="education-meta">
+                        <span class="education-gpa">CGPA: 8.43/10</span>
+                        <span class="education-date">Oct 2020 – May 2024</span>
+                    </div>
+                    <div class="coursework-section">
+                        <p class="coursework-title">Relevant Coursework:</p>
+                        <div class="coursework-list">
+                            <span class="coursework-item">Information & Network Security</span>
+                            <span class="coursework-item">Ethical Hacking</span>
+                            <span class="coursework-item">Vulnerability Assessment</span>
+                            <span class="coursework-item">Computer Networks</span>
+                            <span class="coursework-item">Operating Systems</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
