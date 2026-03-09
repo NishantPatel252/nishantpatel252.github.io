@@ -311,7 +311,7 @@ description: Contact Nishant Patel - Get in touch for cybersecurity opportunitie
                 <div class="contact-info fade-in">
                     <div class="availability-badge">
                         <span class="availability-dot"></span>
-                        <span>Available for Co-op: Summer/Fall 2025</span>
+                        <span>Available for Full-time opportunities: May 2026 onwards</span>
                     </div>
 
                     <h1>contact</h1>
@@ -407,6 +407,12 @@ description: Contact Nishant Patel - Get in touch for cybersecurity opportunitie
                                 placeholder="Your message here..." required></textarea>
                         </div>
 
+                        <!-- Honeypot - invisible to humans, bots will fill this in -->
+                        <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+                            <label for="website">Leave this empty</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
                         <button type="submit" class="submit-btn">send_message</button>
 
                         <p class="form-note">
@@ -421,13 +427,29 @@ description: Contact Nishant Patel - Get in touch for cybersecurity opportunitie
 
 <script>
     // Contact form handler - Google Apps Script
-    // Replace YOUR_SCRIPT_URL with your deployed Google Apps Script URL
-    const SCRIPT_URL = 'YOUR_SCRIPT_URL';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzEzp2n1-Wv5BkdBMrkOdOg9K9iDgWWbjWlufVrSS5ESFVE7ngvNuz42DIyWR6a-az4/exec';
+
+    // Client-side rate limiting (5 min cooldown)
+    const COOLDOWN_MS = 5 * 60 * 1000;
+    const LAST_SUBMIT_KEY = 'contact_last_submit';
 
     document.getElementById('contact-form').addEventListener('submit', async function (e) {
         e.preventDefault();
         const btn = this.querySelector('.submit-btn');
         const originalText = btn.textContent;
+
+        // Client-side rate limit check
+        const lastSubmit = localStorage.getItem(LAST_SUBMIT_KEY);
+        if (lastSubmit && (Date.now() - parseInt(lastSubmit)) < COOLDOWN_MS) {
+            const remaining = Math.ceil((COOLDOWN_MS - (Date.now() - parseInt(lastSubmit))) / 60000);
+            btn.textContent = '✗ please wait ' + remaining + ' min';
+            btn.style.background = 'var(--accent-red, #ff4d6a)';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 3000);
+            return;
+        }
 
         btn.textContent = 'sending...';
         btn.disabled = true;
@@ -436,7 +458,9 @@ description: Contact Nishant Patel - Get in touch for cybersecurity opportunitie
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
             subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
+            message: document.getElementById('message').value,
+            website: document.getElementById('website').value,  // honeypot
+            _timestamp: Date.now()  // for server-side rate limiting
         };
 
         try {
@@ -445,6 +469,7 @@ description: Contact Nishant Patel - Get in touch for cybersecurity opportunitie
                 await new Promise(r => setTimeout(r, 1500));
                 btn.textContent = '✓ message_sent';
                 btn.classList.add('btn-success');
+                localStorage.setItem(LAST_SUBMIT_KEY, Date.now().toString());
                 this.reset();
             } else {
                 const response = await fetch(SCRIPT_URL, {
@@ -455,10 +480,11 @@ description: Contact Nishant Patel - Get in touch for cybersecurity opportunitie
                 });
                 btn.textContent = '✓ message_sent';
                 btn.classList.add('btn-success');
+                localStorage.setItem(LAST_SUBMIT_KEY, Date.now().toString());
                 this.reset();
             }
         } catch (error) {
-            btn.textContent = '✗ error - try email instead';
+            btn.textContent = '✗ error - try LinkedIn instead';
             btn.style.background = 'var(--accent-red, #ff4d6a)';
         }
 

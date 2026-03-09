@@ -112,6 +112,18 @@ threat intelligence, and risk management."
         border: 1px solid rgba(255, 165, 0, 0.3);
     }
 
+    .project-category.aisec {
+        background: rgba(180, 255, 0, 0.2);
+        color: #c4ff4d;
+        border: 1px solid rgba(180, 255, 0, 0.3);
+    }
+
+    .project-category.netdef {
+        background: rgba(0, 200, 180, 0.2);
+        color: #4dffd2;
+        border: 1px solid rgba(0, 200, 180, 0.3);
+    }
+
     .project-category.dev {
         background: rgba(0, 255, 65, 0.2);
         color: var(--accent-green);
@@ -197,6 +209,8 @@ threat intelligence, and risk management."
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-filter="all">"*"</button>
                     <button class="filter-btn" data-filter="offensive">"offensive"</button>
+                    <button class="filter-btn" data-filter="aisec">"ai-security"</button>
+                    <button class="filter-btn" data-filter="netdef">"net-defense"</button>
                     <button class="filter-btn" data-filter="threatintel">"threatintel"</button>
                     <button class="filter-btn" data-filter="grc">"grc"</button>
                     <button class="filter-btn" data-filter="recon">"recon"</button>
@@ -209,6 +223,105 @@ threat intelligence, and risk management."
     <section class="section" style="padding-top: 0;">
         <div class="container">
             <div class="project-grid">
+
+                <!-- AI-Powered DAST Tool -->
+                <article class="project-card fade-on-scroll" data-category="aisec">
+                    <div class="project-header">
+                        <span class="project-category aisec">AI Security</span>
+                        <h3 class="project-title">AI-Integrated DAST Vulnerability Scanner</h3>
+                        <span class="project-date">2026</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Led a 5-member team to build an LLM-powered Dynamic Application Security Testing tool
+                            that combines OWASP ZAP with Claude API for intelligent vulnerability triage.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Architected intelligent triage system analyzing crawled data for SQLi, XSS, parameter
+                                injection, and path traversal probability</li>
+                            <li>Evaluated local LLM (Llama 3.2 8B) vs cloud API, selecting Claude for 10x faster
+                                response times and reliable structured output</li>
+                            <li>Developed automated Zest script generation for targeted security tests, reducing scan
+                                overhead vs brute-force approaches</li>
+                            <li>Achieved ~$1 per 50-endpoint scan cycle through intelligent test selection and
+                                token-efficient preprocessing</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Claude API</span>
+                            <span class="tech-tag">OWASP ZAP</span>
+                            <span class="tech-tag">LLM</span>
+                            <span class="tech-tag">Zest Scripts</span>
+                            <span class="tech-tag">SCRUM</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Linux Firewall & Gateway -->
+                <article class="project-card fade-on-scroll" data-category="netdef">
+                    <div class="project-header">
+                        <span class="project-category netdef">Network Defense</span>
+                        <h3 class="project-title">Linux Firewall & Network Gateway</h3>
+                        <span class="project-date">2025</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Configured a dual-homed Linux gateway with stateful firewall policies, DNS infrastructure,
+                            and comprehensive logging for enterprise-style network segmentation.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Implemented default-deny iptables policies restricting traffic to SSH, DNS, HTTPS with
+                                stateful packet filtering</li>
+                            <li>Deployed SYN-based rate limiting (10 req/hr) to mitigate DoS on forwarded HTTPS traffic
+                            </li>
+                            <li>Built BIND9 caching DNS with upstream forwarding, reducing query latency from 38ms to
+                                1ms</li>
+                            <li>Created custom logging rules with rsyslog integration for centralized audit trail of
+                                dropped packets</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">iptables</span>
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">BIND9</span>
+                            <span class="tech-tag">NAT</span>
+                            <span class="tech-tag">rsyslog</span>
+                            <span class="tech-tag">tcpdump</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Snort IDS -->
+                <article class="project-card fade-on-scroll" data-category="netdef">
+                    <div class="project-header">
+                        <span class="project-category netdef">Network Defense</span>
+                        <h3 class="project-title">Snort Intrusion Detection System</h3>
+                        <span class="project-date">2025</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            Deployed Snort as a NIDS to monitor a /24 subnet, authoring 12+ custom detection rules
+                            covering reconnaissance, application-layer attacks, and DoS patterns.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Authored detection rules for Nmap TCP Ping, Null Scan, and SYN-FIN scans using flag
+                                analysis and threshold triggering</li>
+                            <li>Built content-matching rules to detect SSH on non-standard ports via protocol banner
+                                inspection</li>
+                            <li>Implemented SYN flood detection combining flowbits state tracking with detection_filter
+                                (100 pkt/sec) to minimize false positives</li>
+                            <li>Validated all rules by executing corresponding attacks from Kali Linux and iterating on
+                                rule syntax</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Snort</span>
+                            <span class="tech-tag">Kali Linux</span>
+                            <span class="tech-tag">hping3</span>
+                            <span class="tech-tag">Nmap</span>
+                            <span class="tech-tag">IDS Rules</span>
+                            <span class="tech-tag">VirtualBox</span>
+                        </div>
+                    </div>
+                </article>
 
                 <!-- Binary Exploitation -->
                 <article class="project-card fade-on-scroll" data-category="offensive">
