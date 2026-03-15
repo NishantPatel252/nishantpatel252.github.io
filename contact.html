@@ -425,6 +425,8 @@ description: Contact Nishant Patel - Get in touch for cybersecurity opportunitie
     </section>
 </main>
 
+<iframe name="hidden-form-target" id="hidden-form-target" style="display:none;" sandbox="allow-forms allow-scripts"></iframe>
+
 <script>
     // Contact form handler - Google Apps Script
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzEzp2n1-Wv5BkdBMrkOdOg9K9iDgWWbjWlufVrSS5ESFVE7ngvNuz42DIyWR6a-az4/exec';
@@ -433,7 +435,7 @@ description: Contact Nishant Patel - Get in touch for cybersecurity opportunitie
     const COOLDOWN_MS = 5 * 60 * 1000;
     const LAST_SUBMIT_KEY = 'contact_last_submit';
 
-    document.getElementById('contact-form').addEventListener('submit', async function (e) {
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
         e.preventDefault();
         const btn = this.querySelector('.submit-btn');
         const originalText = btn.textContent;
@@ -454,45 +456,46 @@ description: Contact Nishant Patel - Get in touch for cybersecurity opportunitie
         btn.textContent = 'sending...';
         btn.disabled = true;
 
-        const data = {
+        // Build a hidden form and submit it to the iframe
+        const hiddenForm = document.createElement('form');
+        hiddenForm.method = 'POST';
+        hiddenForm.action = SCRIPT_URL;
+        hiddenForm.target = 'hidden-form-target';
+        hiddenForm.style.display = 'none';
+
+        const fields = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
             subject: document.getElementById('subject').value,
             message: document.getElementById('message').value,
-            website: document.getElementById('website').value,  // honeypot
-            _timestamp: Date.now()  // for server-side rate limiting
+            website: document.getElementById('website').value  // honeypot
         };
 
-        try {
-            if (SCRIPT_URL === 'YOUR_SCRIPT_URL') {
-                // Demo mode - simulate success
-                await new Promise(r => setTimeout(r, 1500));
-                btn.textContent = '✓ message_sent';
-                btn.classList.add('btn-success');
-                localStorage.setItem(LAST_SUBMIT_KEY, Date.now().toString());
-                this.reset();
-            } else {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                btn.textContent = '✓ message_sent';
-                btn.classList.add('btn-success');
-                localStorage.setItem(LAST_SUBMIT_KEY, Date.now().toString());
-                this.reset();
-            }
-        } catch (error) {
-            btn.textContent = '✗ error - try LinkedIn instead';
-            btn.style.background = 'var(--accent-red, #ff4d6a)';
+        for (const [key, value] of Object.entries(fields)) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = value;
+            hiddenForm.appendChild(input);
         }
 
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+        document.body.removeChild(hiddenForm);
+
+        // Show success (we can't read the iframe response due to cross-origin)
         setTimeout(() => {
-            btn.textContent = originalText;
-            btn.disabled = false;
-            btn.classList.remove('btn-success');
-            btn.style.background = '';
-        }, 3000);
+            btn.textContent = '✓ message_sent';
+            btn.classList.add('btn-success');
+            localStorage.setItem(LAST_SUBMIT_KEY, Date.now().toString());
+            document.getElementById('contact-form').reset();
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.disabled = false;
+                btn.classList.remove('btn-success');
+                btn.style.background = '';
+            }, 3000);
+        }, 1500);
     });
 </script>
