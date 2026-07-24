@@ -141,9 +141,192 @@ layout: default
         max-width: 100%;
         border-radius: var(--radius-md);
         border: 1px solid rgba(0, 255, 65, 0.2);
-        margin: var(--space-lg) 0;
+        margin: var(--space-lg) auto;
+        display: block;
+        transition: var(--transition-normal);
+        background: var(--bg-tertiary);
+        padding: var(--space-sm);
     }
 
+    .post-body img:hover {
+        border-color: var(--accent-green);
+        box-shadow: 0 0 20px rgba(0, 255, 65, 0.12);
+    }
+
+    /* --- Tables --- */
+    .post-body table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: var(--space-lg) 0;
+        font-size: 0.9rem;
+        background: var(--bg-tertiary);
+        border: 1px solid rgba(0, 255, 65, 0.2);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+    }
+
+    .post-body thead th {
+        background: rgba(0, 255, 65, 0.1);
+        color: var(--accent-green);
+        font-weight: 600;
+        text-align: left;
+        padding: var(--space-md) var(--space-lg);
+        border-bottom: 2px solid rgba(0, 255, 65, 0.25);
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+
+    .post-body tbody td {
+        padding: var(--space-sm) var(--space-lg);
+        border-bottom: 1px solid rgba(0, 255, 65, 0.08);
+        color: var(--text-white);
+    }
+
+    .post-body tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .post-body tbody tr:hover {
+        background: rgba(0, 255, 65, 0.04);
+    }
+
+    .post-body tbody td code {
+        background: rgba(0, 255, 65, 0.08);
+        color: var(--accent-cyan);
+        padding: 2px 6px;
+        border-radius: var(--radius-sm);
+        font-size: 0.85rem;
+    }
+
+    /* --- Horizontal Rules --- */
+    .post-body hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 255, 65, 0.3) 20%,
+            rgba(0, 212, 255, 0.3) 50%,
+            rgba(0, 255, 65, 0.3) 80%,
+            transparent
+        );
+        margin: var(--space-xl) 0;
+    }
+
+    /* --- Cover Image --- */
+    .post-cover {
+        max-width: 800px;
+        margin: 0 auto var(--space-lg);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        border: 1px solid rgba(0, 255, 65, 0.15);
+    }
+
+    .post-cover img {
+        width: 100%;
+        display: block;
+        border-radius: var(--radius-md);
+    }
+
+    /* --- Series Navigation --- */
+    .series-nav {
+        max-width: 800px;
+        margin: var(--space-xl) auto 0;
+        background: var(--bg-tertiary);
+        border: 1px solid rgba(0, 255, 65, 0.15);
+        border-radius: var(--radius-md);
+        padding: var(--space-lg);
+    }
+
+    .series-nav-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-md);
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .series-nav-header::before {
+        content: '📚';
+    }
+
+    .series-nav-title {
+        color: var(--accent-green);
+        font-size: 1rem;
+        margin-bottom: var(--space-md);
+        font-weight: 600;
+    }
+
+    .series-nav-links {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+    }
+
+    .series-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-sm);
+        color: var(--accent-cyan);
+        font-size: 0.85rem;
+        padding: var(--space-sm) var(--space-md);
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        border-radius: var(--radius-sm);
+        transition: var(--transition-normal);
+        text-decoration: none;
+        max-width: 48%;
+    }
+
+    .series-link:hover {
+        color: var(--accent-green);
+        border-color: var(--accent-green);
+        background: rgba(0, 255, 65, 0.05);
+        transform: translateY(-2px);
+        box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+    }
+
+    .series-link-next {
+        margin-left: auto;
+        text-align: right;
+    }
+
+    .series-link-label {
+        display: block;
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+    }
+
+    .series-link-title {
+        display: block;
+        font-size: 0.85rem;
+    }
+
+    .series-link-current {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        padding: var(--space-sm) var(--space-md);
+        border: 1px solid rgba(102, 102, 102, 0.2);
+        border-radius: var(--radius-sm);
+        cursor: default;
+        opacity: 0.6;
+    }
+
+    .series-link-current:hover {
+        color: var(--text-muted);
+        transform: none;
+        box-shadow: none;
+        background: transparent;
+        border-color: rgba(102, 102, 102, 0.2);
+    }
+
+    /* --- Post Navigation --- */
     .post-nav {
         max-width: 800px;
         margin: 0 auto;
@@ -176,6 +359,9 @@ layout: default
                 {% assign minutes = words | divided_by: 200 %}
                 {% if minutes < 1 %}{% assign minutes=1 %}{% endif %} <span class="post-reading-time">⏱ {{ minutes }}
                     min read</span>
+                {% if page.series %}
+                <span class="tag tag-cyan">{{ page.series }} — Part {{ page.series_part }}</span>
+                {% endif %}
             </div>
 
             <h1 class="post-title">{{ page.title }}</h1>
@@ -193,9 +379,73 @@ layout: default
     <!-- Post Content -->
     <section class="post-content-section">
         <div class="container">
+            {% if page.cover_image %}
+            <div class="post-cover">
+                <img src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}">
+            </div>
+            {% endif %}
+
             <article class="post-body">
                 {{ content }}
             </article>
+
+            {% if page.series %}
+            <!-- Series Navigation -->
+            {% assign series_posts = site.posts | where: "series", page.series | sort: "series_part" %}
+            {% if series_posts.size > 1 %}
+            <nav class="series-nav">
+                <div class="series-nav-header">Series</div>
+                <div class="series-nav-title">{{ page.series }}</div>
+                <div class="series-nav-links">
+                    {% assign prev_post = nil %}
+                    {% assign next_post = nil %}
+                    {% for s_post in series_posts %}
+                        {% if s_post.series_part == page.series_part %}
+                            {% assign current_index = forloop.index0 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% assign prev_wanted = current_index | minus: 1 %}
+                    {% for s_post in series_posts %}
+                        {% assign idx = forloop.index0 %}
+                        {% if idx == prev_wanted %}
+                            {% assign prev_post = s_post %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for s_post in series_posts %}
+                        {% assign idx = forloop.index0 %}
+                        {% if current_index != nil %}
+                            {% assign wanted = current_index | plus: 1 %}
+                            {% if idx == wanted %}
+                                {% assign next_post = s_post %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if prev_post %}
+                    <a href="{{ prev_post.url | relative_url }}" class="series-link series-link-prev">
+                        <div>
+                            <span class="series-link-label">← Previous</span>
+                            <span class="series-link-title">Part {{ prev_post.series_part }}: {{ prev_post.title }}</span>
+                        </div>
+                    </a>
+                    {% else %}
+                    <span class="series-link series-link-current">Part {{ page.series_part }} of {{ series_posts.size }}</span>
+                    {% endif %}
+
+                    {% if next_post %}
+                    <a href="{{ next_post.url | relative_url }}" class="series-link series-link-next">
+                        <div>
+                            <span class="series-link-label">Next →</span>
+                            <span class="series-link-title">Part {{ next_post.series_part }}: {{ next_post.title }}</span>
+                        </div>
+                    </a>
+                    {% else %}
+                    <span class="series-link series-link-current series-link-next">Coming Soon — Part {{ page.series_part | plus: 1 }}</span>
+                    {% endif %}
+                </div>
+            </nav>
+            {% endif %}
+            {% endif %}
 
             <nav class="post-nav">
                 <a href="{{ '/blog' | relative_url }}" class="back-link">

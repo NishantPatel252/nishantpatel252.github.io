@@ -8,7 +8,7 @@ url: "https://nishantpatel252.github.io"
 baseurl: ""
 
 # Google Analytics - replace with your Measurement ID from analytics.google.com
-google_analytics: "G-XXXXXXXXXX"
+google_analytics: "G-GGYTDPMCNJ"
 
 permalink: /blog/:year/:month/:day/:title/
 
