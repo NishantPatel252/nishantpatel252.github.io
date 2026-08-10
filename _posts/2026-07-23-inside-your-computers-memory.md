@@ -454,7 +454,7 @@ Now that we understand how local variables are stored, we're ready to answer a m
 
 > **What happens if we write more data than a stack variable can hold?**
 
-In **Part 2** of this series, we'll explore one of the most famous vulnerabilities in computer security:
+In **Part 2** of this series, [From Variables to Vulnerabilities: Understanding Stack Buffer Overflow Attacks](/blog/2026/08/07/understanding-stack-buffer-overflow-attacks), we explore one of the most famous vulnerabilities in computer security:
 
 - What is a buffer overflow?
 - How does it overwrite the return address?
@@ -463,4 +463,5 @@ In **Part 2** of this series, we'll explore one of the most famous vulnerabiliti
 - How do modern defenses like Stack Canaries, ASLR, NX, PIE, and RELRO protect programs?
 - Why are languages like Python and Rust naturally resistant to these attacks?
 
-Stay tuned!
+👉 **[Read Part 2: From Variables to Vulnerabilities →](/blog/2026/08/07/understanding-stack-buffer-overflow-attacks)**
+
